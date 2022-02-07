@@ -3,6 +3,8 @@ import Head from 'next/head';
 
 // Components
 import Header from '../components/Header/Header';
+import GameBoard from '../components/GameBoard/GameBoard';
+import Keyboard from '../components/Keyboard/Keyboard';
 
 // Css
 import styles from '../styles/Home.module.scss';
@@ -16,6 +18,8 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
+      <GameBoard />
+      <Keyboard />
     </div>
   );
 }
