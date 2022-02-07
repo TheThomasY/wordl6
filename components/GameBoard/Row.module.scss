@@ -1,0 +1,12 @@
+.row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 0.5rem;
+}
+
+.tile {
+  margin: 0 auto;
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 1px solid gray;
+}
