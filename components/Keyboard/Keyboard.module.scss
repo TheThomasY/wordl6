@@ -1,4 +1,23 @@
 .keyboard {
   height: 20rem;
-  background-color: lightblue;
+  margin: 0 auto;
+  padding: 1rem 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.secondRow {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
