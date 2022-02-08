@@ -7,7 +7,7 @@
 }
 
 .gameGrid {
-  width: 50vh;
+  width: calc(100vh - 25rem);
   height: 100%;
   display: grid;
   grid-template-rows: repeat(6, 1fr);
