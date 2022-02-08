@@ -21,16 +21,27 @@ export default function Home() {
     5: '      ',
     6: '      ',
   });
-  const [currentRow, setCurrentRow] = useState(0);
+  const [currentRow, setCurrentRow] = useState(1);
   const [currentTile, setCurrentTile] = useState(0);
 
-  const updateBoardHandler = () => {
+  const updateBoard = (newLetter) => {
     setBoard((prevBoard) => {
       return {
         ...prevBoard,
-        // row: new string
+        [currentRow]:
+          prevBoard[currentRow].slice(0, currentTile) +
+          newLetter +
+          prevBoard[currentRow].slice(currentTile + 1),
       };
     });
+
+    if (currentTile < 5) {
+      setCurrentTile((prevCurrentTile) => prevCurrentTile + 1);
+    } else {
+      console.log(currentRow);
+      setCurrentTile(0);
+      setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
+    }
   };
 
   return (
@@ -42,7 +53,7 @@ export default function Home() {
       </Head>
       <Header />
       <GameBoard board={board} />
-      <Keyboard />
+      <Keyboard updateBoard={updateBoard} />
     </div>
   );
 }

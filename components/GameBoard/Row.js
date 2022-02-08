@@ -4,7 +4,6 @@ import styles from './Row.module.scss';
 
 export default function Row(props) {
   let line = props.line.split('');
-  console.log(line);
 
   return (
     <div className={styles.row}>

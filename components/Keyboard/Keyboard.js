@@ -4,7 +4,7 @@ import Key from './Key';
 
 import styles from './Keyboard.module.scss';
 
-export default function Keyboard() {
+export default function Keyboard(props) {
   const letters1 = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
   const letters2 = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
   const letters3 = ['↵', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '←'];
@@ -13,19 +13,19 @@ export default function Keyboard() {
     <div className={styles.keyboard}>
       <div className={styles.row}>
         {letters1.map((keyVal) => (
-          <Key key={keyVal} keyVal={keyVal} />
+          <Key key={keyVal} keyVal={keyVal} updateBoard={props.updateBoard} />
         ))}
       </div>
       <div className={styles.row}>
         <div className={styles.indent}></div>
         {letters2.map((keyVal) => (
-          <Key key={keyVal} keyVal={keyVal} />
+          <Key key={keyVal} keyVal={keyVal} updateBoard={props.updateBoard} />
         ))}
         <div className={styles.indent}></div>
       </div>
       <div className={styles.row}>
         {letters3.map((keyVal) => (
-          <Key key={keyVal} keyVal={keyVal} />
+          <Key key={keyVal} keyVal={keyVal} updateBoard={props.updateBoard} />
         ))}
       </div>
     </div>
