@@ -13,15 +13,25 @@ import Keyboard from '../components/Keyboard/Keyboard';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
-  const [row, setRow] = useState(0);
-  const [board, setBoard] = useState([
-    ['q', 'w', 'e', 'r', 't', 'y'],
-    ['', '', '', '', '', ''],
-    ['', '', '', '', '', ''],
-    ['', '', '', '', '', ''],
-    ['', '', '', '', '', ''],
-    ['', '', '', '', '', ''],
-  ]);
+  const [board, setBoard] = useState({
+    1: '      ',
+    2: '      ',
+    3: '      ',
+    4: '      ',
+    5: '      ',
+    6: '      ',
+  });
+  const [currentRow, setCurrentRow] = useState(0);
+  const [currentTile, setCurrentTile] = useState(0);
+
+  const updateBoardHandler = () => {
+    setBoard((prevBoard) => {
+      return {
+        ...prevBoard,
+        // row: new string
+      };
+    });
+  };
 
   return (
     <div className={styles.container}>
