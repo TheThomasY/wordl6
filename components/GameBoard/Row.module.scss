@@ -9,5 +9,20 @@
   margin: 0 auto;
   height: 100%;
   width: 100%;
-  border: 1px solid gray;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  line-height: 3rem;
+  font-weight: 700;
+  vertical-align: middle;
+  text-transform: uppercase;
+  border: 2px solid gray;
+}
+
+@media (max-height: 550px) {
+  .tile {
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 }

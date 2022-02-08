@@ -1,6 +1,9 @@
 // Next
 import Head from 'next/head';
 
+// React
+import React, { useState } from 'react';
+
 // Components
 import Header from '../components/Header/Header';
 import GameBoard from '../components/GameBoard/GameBoard';
@@ -10,6 +13,16 @@ import Keyboard from '../components/Keyboard/Keyboard';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
+  const [row, setRow] = useState(0);
+  const [board, setBoard] = useState([
+    ['q', 'w', 'e', 'r', 't', 'y'],
+    ['', '', '', '', '', ''],
+    ['', '', '', '', '', ''],
+    ['', '', '', '', '', ''],
+    ['', '', '', '', '', ''],
+    ['', '', '', '', '', ''],
+  ]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +31,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-      <GameBoard />
+      <GameBoard board={board} />
       <Keyboard />
     </div>
   );
