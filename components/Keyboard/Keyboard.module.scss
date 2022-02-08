@@ -1,4 +1,15 @@
 .keyboard {
+  display: block;
   height: 20rem;
-  background-color: lightblue;
+  margin: 0 0.8rem;
+}
+
+.row {
+  width: 100%;
+  margin-bottom: 0.8rem;
+  display: flex;
+}
+
+.indent {
+  width: 1.5rem;
 }
