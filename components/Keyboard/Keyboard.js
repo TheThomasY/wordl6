@@ -17,9 +17,11 @@ export default function Keyboard() {
         ))}
       </div>
       <div className={styles.row}>
+        <div className={styles.indent}></div>
         {letters2.map((keyVal) => (
           <Key key={keyVal} keyVal={keyVal} />
         ))}
+        <div className={styles.indent}></div>
       </div>
       <div className={styles.row}>
         {letters3.map((keyVal) => (
