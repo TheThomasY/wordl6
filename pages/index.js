@@ -25,22 +25,44 @@ export default function Home() {
   const [currentTile, setCurrentTile] = useState(0);
 
   const updateBoard = (newLetter) => {
-    setBoard((prevBoard) => {
-      return {
-        ...prevBoard,
-        [currentRow]:
-          prevBoard[currentRow].slice(0, currentTile) +
-          newLetter +
-          prevBoard[currentRow].slice(currentTile + 1),
-      };
-    });
-
-    if (currentTile < 5) {
-      setCurrentTile((prevCurrentTile) => prevCurrentTile + 1);
+    if (newLetter === '←') {
+      // Backspace Pressed: remove last letter
+      if (currentTile !== 0) {
+        setBoard((prevBoard) => {
+          return {
+            ...prevBoard,
+            [currentRow]:
+              prevBoard[currentRow].slice(0, currentTile - 1) +
+              ' ' +
+              prevBoard[currentRow].slice(currentTile),
+          };
+        });
+        // Reset current tile to previous
+        setCurrentTile((prevCurrentTile) => prevCurrentTile - 1);
+      }
+    } else if (newLetter === '↵') {
+      // Enter Pressed: go to new line
+      if (!board[currentRow].includes(' ') && currentRow < 6) {
+        setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
+        setCurrentTile(0);
+      }
+      // TODO - check for win condition here
     } else {
-      console.log(currentRow);
-      setCurrentTile(0);
-      setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
+      // You can't click letters if current line is full
+      if (!board[currentRow].includes(' ')) {
+        return;
+      }
+      // Letter Pressed: add letter to current grid
+      setBoard((prevBoard) => {
+        return {
+          ...prevBoard,
+          [currentRow]:
+            prevBoard[currentRow].slice(0, currentTile) +
+            newLetter +
+            prevBoard[currentRow].slice(currentTile + 1),
+        };
+      });
+      setCurrentTile((prevCurrentTile) => prevCurrentTile + 1);
     }
   };
 
