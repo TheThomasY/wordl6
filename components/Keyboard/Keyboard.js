@@ -16,7 +16,7 @@ export default function Keyboard() {
           <Key key={keyVal} keyVal={keyVal} />
         ))}
       </div>
-      <div className={styles.secondRow}>
+      <div className={styles.row}>
         {letters2.map((keyVal) => (
           <Key key={keyVal} keyVal={keyVal} />
         ))}
