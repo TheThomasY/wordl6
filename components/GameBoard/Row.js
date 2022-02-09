@@ -11,7 +11,11 @@ export default function Row(props) {
         <div
           key={props.row.toString() + square.toString()}
           className={
-            styles.tile + ' ' + (letter !== ' ' ? styles['tile-active'] : '')
+            styles.tile +
+            ' ' +
+            (letter !== ' '
+              ? styles['tile-active'] + ' ' + styles['scale-up-center']
+              : '')
           }
         >
           {letter}
