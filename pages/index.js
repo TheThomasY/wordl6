@@ -13,6 +13,8 @@ import Keyboard from '../components/Keyboard/Keyboard';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
+  const [word, setWord] = useState('');
+
   const [board, setBoard] = useState({
     1: '      ',
     2: '      ',
