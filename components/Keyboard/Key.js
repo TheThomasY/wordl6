@@ -19,7 +19,7 @@ export default function Key(props) {
   }
 
   const letterClickedHandler = (event) => {
-    props.updateBoard(event.target.id);
+    props.updateBoard(event.currentTarget.id);
   };
 
   return (
@@ -32,7 +32,7 @@ export default function Key(props) {
           ? styles['function-keys']
           : '')
       }
-      id={keyVal}
+      id={props.keyVal}
     >
       {keyVal}
     </button>

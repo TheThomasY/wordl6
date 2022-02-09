@@ -10,7 +10,9 @@ export default function Row(props) {
       {line.map((letter, square) => (
         <div
           key={props.row.toString() + square.toString()}
-          className={styles.tile}
+          className={
+            styles.tile + ' ' + (letter !== ' ' ? styles['tile-active'] : '')
+          }
         >
           {letter}
         </div>
