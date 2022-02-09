@@ -1,13 +1,16 @@
+// * React
 import React from 'react';
 
+// * Components
 import Key from './Key';
 
+// * Sass
 import styles from './Keyboard.module.scss';
 
 export default function Keyboard(props) {
   const letters1 = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'];
   const letters2 = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
-  const letters3 = ['↵', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '←'];
+  const letters3 = ['enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'back'];
 
   return (
     <div className={styles.keyboard}>
