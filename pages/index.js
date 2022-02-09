@@ -24,7 +24,9 @@ export default function Home() {
   const [currentRow, setCurrentRow] = useState(1);
   const [currentTile, setCurrentTile] = useState(0);
 
-  const [word, setWord] = useState('qwerty');
+  const wordList = ['temper', 'outfit', 'served', 'fright', 'piston'];
+
+  const [word, setWord] = useState(wordList[Math.floor(Math.random() * 5)]);
   const [matches, setMatches] = useState({});
 
   const checkWord = (guess, word) => {
