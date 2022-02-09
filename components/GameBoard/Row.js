@@ -1,5 +1,9 @@
 import React from 'react';
 
+// * Components
+import Tile from './Tile';
+
+// * Sass
 import styles from './Row.module.scss';
 
 export default function Row(props) {
@@ -8,18 +12,11 @@ export default function Row(props) {
   return (
     <div className={styles.row}>
       {line.map((letter, square) => (
-        <div
+        <Tile
           key={props.row.toString() + square.toString()}
-          className={
-            styles.tile +
-            ' ' +
-            (letter !== ' '
-              ? styles['tile-active'] + ' ' + styles['scale-up-center']
-              : '')
-          }
-        >
-          {letter}
-        </div>
+          letter={letter}
+          matches={props.matches}
+        />
       ))}
     </div>
   );
