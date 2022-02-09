@@ -16,19 +16,34 @@ export default function Keyboard(props) {
     <div className={styles.keyboard}>
       <div className={styles.row}>
         {letters1.map((keyVal) => (
-          <Key key={keyVal} keyVal={keyVal} updateBoard={props.updateBoard} />
+          <Key
+            key={keyVal}
+            keyVal={keyVal}
+            updateBoard={props.updateBoard}
+            matches={props.matches}
+          />
         ))}
       </div>
       <div className={styles.row}>
         <div className={styles.indent}></div>
         {letters2.map((keyVal) => (
-          <Key key={keyVal} keyVal={keyVal} updateBoard={props.updateBoard} />
+          <Key
+            key={keyVal}
+            keyVal={keyVal}
+            updateBoard={props.updateBoard}
+            matches={props.matches}
+          />
         ))}
         <div className={styles.indent}></div>
       </div>
       <div className={styles.row}>
         {letters3.map((keyVal) => (
-          <Key key={keyVal} keyVal={keyVal} updateBoard={props.updateBoard} />
+          <Key
+            key={keyVal}
+            keyVal={keyVal}
+            updateBoard={props.updateBoard}
+            matches={props.matches}
+          />
         ))}
       </div>
     </div>

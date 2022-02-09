@@ -9,13 +9,24 @@ import styles from './Key.module.scss';
 
 export default function Key(props) {
   let keyVal = props.keyVal;
+  let keyStyle = {};
 
   if (props.keyVal === 'enter') {
     keyVal = <BsArrowReturnLeft />;
+    keyStyle = { flexGrow: 1.5, fontSize: '2rem' };
   }
 
   if (props.keyVal === 'back') {
     keyVal = <BsBackspace />;
+    keyStyle = { flexGrow: 1.5, fontSize: '2rem' };
+  }
+
+  if (props.matches[keyVal] === 0) {
+    keyStyle = { backgroundColor: '#3e9f1c', color: 'white' };
+  }
+
+  if (props.matches[keyVal] === 1) {
+    keyStyle = { backgroundColor: '#c39318', color: 'white' };
   }
 
   const letterClickedHandler = (event) => {
@@ -25,13 +36,8 @@ export default function Key(props) {
   return (
     <button
       onClick={letterClickedHandler}
-      className={
-        styles['key'] +
-        ' ' +
-        (props.keyVal === 'enter' || props.keyVal === 'back'
-          ? styles['function-keys']
-          : '')
-      }
+      className={styles['key']}
+      style={keyStyle}
       id={props.keyVal}
     >
       {keyVal}

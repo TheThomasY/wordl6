@@ -10,7 +10,12 @@ export default function GameBoard(props) {
     <div className={styles.gameBoard}>
       <div className={styles.gameGrid}>
         {rows.map((row) => (
-          <Row key={row} line={props.board[row]} row={row} />
+          <Row
+            key={row}
+            line={props.board[row]}
+            row={row}
+            matches={props.matches}
+          />
         ))}
       </div>
     </div>
