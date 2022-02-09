@@ -13,8 +13,6 @@ import Keyboard from '../components/Keyboard/Keyboard';
 import styles from '../styles/Home.module.scss';
 
 export default function Home() {
-  const [word, setWord] = useState('');
-
   const [board, setBoard] = useState({
     1: '      ',
     2: '      ',
@@ -25,6 +23,32 @@ export default function Home() {
   });
   const [currentRow, setCurrentRow] = useState(1);
   const [currentTile, setCurrentTile] = useState(0);
+
+  const [word, setWord] = useState('qwerty');
+  const [matches, setMatches] = useState({});
+
+  const checkWord = (guess, word) => {
+    console.log(guess, word);
+    for (let i = 0; i < guess.length; i++) {
+      if (guess[i] === word[i]) {
+        // * If letter matches exactly assign 0
+        setMatches((prevMatches) => {
+          return {
+            ...prevMatches,
+            [guess[i]]: 0,
+          };
+        });
+      } else if (word.includes(guess[i])) {
+        // * If letter is in the word but not correct place, assign 1
+        setMatches((prevMatches) => {
+          return {
+            ...prevMatches,
+            [guess[i]]: 1,
+          };
+        });
+      }
+    }
+  };
 
   const updateBoard = (newLetter) => {
     if (newLetter === 'back') {
@@ -45,6 +69,7 @@ export default function Home() {
     } else if (newLetter === 'enter') {
       // Enter Pressed: go to new line
       if (!board[currentRow].includes(' ') && currentRow < 6) {
+        checkWord(board[currentRow], word);
         setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
         setCurrentTile(0);
       }
@@ -76,8 +101,8 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-      <GameBoard board={board} />
-      <Keyboard updateBoard={updateBoard} />
+      <GameBoard board={board} matches={matches} />
+      <Keyboard updateBoard={updateBoard} matches={matches} />
     </div>
   );
 }
