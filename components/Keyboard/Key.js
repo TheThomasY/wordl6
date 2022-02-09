@@ -10,7 +10,13 @@ export default function Key(props) {
   return (
     <button
       onClick={letterClickedHandler}
-      className={styles.key}
+      className={
+        styles['key'] +
+        ' ' +
+        (props.keyVal === '↵' || props.keyVal === '←'
+          ? styles['function-keys']
+          : '')
+      }
       id={props.keyVal}
     >
       {props.keyVal}
