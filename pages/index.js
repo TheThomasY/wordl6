@@ -25,7 +25,7 @@ export default function Home() {
   const [currentTile, setCurrentTile] = useState(0);
 
   const updateBoard = (newLetter) => {
-    if (newLetter === '←') {
+    if (newLetter === 'back') {
       // Backspace Pressed: remove last letter
       if (currentTile !== 0) {
         setBoard((prevBoard) => {
@@ -40,7 +40,7 @@ export default function Home() {
         // Reset current tile to previous
         setCurrentTile((prevCurrentTile) => prevCurrentTile - 1);
       }
-    } else if (newLetter === '↵') {
+    } else if (newLetter === 'enter') {
       // Enter Pressed: go to new line
       if (!board[currentRow].includes(' ') && currentRow < 6) {
         setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
