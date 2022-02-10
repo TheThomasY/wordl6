@@ -46,6 +46,9 @@ export default function Home() {
       } else if (word.includes(guess[i])) {
         // * If letter is in the word but not correct place, assign 1
         newMatches[guess[i]] = 1;
+      } else {
+        // * If letter is not in the word, assign -1
+        newMatches[guess[i]] = -1;
       }
     }
     setMatches((prevMatches) => {
