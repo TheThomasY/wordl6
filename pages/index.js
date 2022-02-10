@@ -1,18 +1,23 @@
-// Next
+// * Next
 import Head from 'next/head';
 
-// React
-import React, { useState } from 'react';
+// * React
+import React, { useEffect, useState } from 'react';
 
-// Components
+// * Components
 import Header from '../components/Header/Header';
 import GameBoard from '../components/GameBoard/GameBoard';
 import Keyboard from '../components/Keyboard/Keyboard';
 
-// Css
+// * Css
 import styles from '../styles/Home.module.scss';
 
+// * Data
+import data from '../word-list.json';
+
 export default function Home() {
+  const [word, setWord] = useState('answer');
+
   const [board, setBoard] = useState({
     1: '      ',
     2: '      ',
@@ -24,9 +29,6 @@ export default function Home() {
   const [currentRow, setCurrentRow] = useState(1);
   const [currentTile, setCurrentTile] = useState(0);
 
-  const wordList = ['temper', 'outfit', 'served', 'fright', 'piston'];
-
-  const [word, setWord] = useState(wordList[Math.floor(Math.random() * 5)]);
   const [matches, setMatches] = useState({
     0: {},
     1: {},
@@ -37,29 +39,46 @@ export default function Home() {
     6: {},
   });
 
+  // * Pick a random word in the answer list and assign that as the correct word
+  useEffect(() => {
+    setWord(
+      data['answer-words'][
+        Math.floor(Math.random() * data['answer-words'].length)
+      ]
+    );
+  }, []);
+
   const checkWord = (guess, word) => {
-    let newMatches = {};
-    for (let i = 0; i < guess.length; i++) {
-      if (guess[i] === word[i]) {
-        // * If letter matches exactly assign 0
-        newMatches[guess[i]] = 0;
-      } else if (word.includes(guess[i])) {
-        // * If letter is in the word but not correct place, assign 1
-        newMatches[guess[i]] = 1;
-      } else {
-        // * If letter is not in the word, assign -1
-        newMatches[guess[i]] = -1;
+    if (data['guess-words'].indexOf(guess) === -1) {
+      console.log('not in word list');
+      return false;
+    } else {
+      // * Check users guess against the answer
+      let newMatches = {};
+      for (let i = 0; i < guess.length; i++) {
+        if (guess[i] === word[i]) {
+          // * If letter matches exactly assign 0
+          newMatches[guess[i]] = 0;
+        } else if (word.includes(guess[i])) {
+          // * If letter is in the word but not correct place, assign 1
+          newMatches[guess[i]] = 1;
+        } else {
+          // * If letter is not in the word, assign -1
+          newMatches[guess[i]] = -1;
+        }
       }
+      setMatches((prevMatches) => {
+        return {
+          ...prevMatches,
+          [currentRow]: newMatches,
+        };
+      });
+      return true;
     }
-    setMatches((prevMatches) => {
-      return {
-        ...prevMatches,
-        [currentRow]: newMatches,
-      };
-    });
   };
 
   const updateBoard = (newLetter) => {
+    // * Handles board updates due to user typing
     if (newLetter === 'back') {
       // Backspace Pressed: remove last letter
       if (currentTile !== 0) {
@@ -78,9 +97,10 @@ export default function Home() {
     } else if (newLetter === 'enter') {
       // Enter Pressed: go to new line
       if (!board[currentRow].includes(' ') && currentRow < 6) {
-        checkWord(board[currentRow], word);
-        setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
-        setCurrentTile(0);
+        if (checkWord(board[currentRow], word)) {
+          setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
+          setCurrentTile(0);
+        }
       }
       // TODO - check for win condition here
     } else {
