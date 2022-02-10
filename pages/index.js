@@ -73,6 +73,7 @@ export default function Home() {
           [currentRow]: newMatches,
         };
       });
+      return true;
     }
   };
 
