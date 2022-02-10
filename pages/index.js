@@ -49,26 +49,31 @@ export default function Home() {
   }, []);
 
   const checkWord = (guess, word) => {
-    // * Check users guess against the answer
-    let newMatches = {};
-    for (let i = 0; i < guess.length; i++) {
-      if (guess[i] === word[i]) {
-        // * If letter matches exactly assign 0
-        newMatches[guess[i]] = 0;
-      } else if (word.includes(guess[i])) {
-        // * If letter is in the word but not correct place, assign 1
-        newMatches[guess[i]] = 1;
-      } else {
-        // * If letter is not in the word, assign -1
-        newMatches[guess[i]] = -1;
+    if (data['guess-words'].indexOf(guess) === -1) {
+      console.log('not in word list');
+      return false;
+    } else {
+      // * Check users guess against the answer
+      let newMatches = {};
+      for (let i = 0; i < guess.length; i++) {
+        if (guess[i] === word[i]) {
+          // * If letter matches exactly assign 0
+          newMatches[guess[i]] = 0;
+        } else if (word.includes(guess[i])) {
+          // * If letter is in the word but not correct place, assign 1
+          newMatches[guess[i]] = 1;
+        } else {
+          // * If letter is not in the word, assign -1
+          newMatches[guess[i]] = -1;
+        }
       }
+      setMatches((prevMatches) => {
+        return {
+          ...prevMatches,
+          [currentRow]: newMatches,
+        };
+      });
     }
-    setMatches((prevMatches) => {
-      return {
-        ...prevMatches,
-        [currentRow]: newMatches,
-      };
-    });
   };
 
   const updateBoard = (newLetter) => {
@@ -91,9 +96,10 @@ export default function Home() {
     } else if (newLetter === 'enter') {
       // Enter Pressed: go to new line
       if (!board[currentRow].includes(' ') && currentRow < 6) {
-        checkWord(board[currentRow], word);
-        setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
-        setCurrentTile(0);
+        if (checkWord(board[currentRow], word)) {
+          setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
+          setCurrentTile(0);
+        }
       }
       // TODO - check for win condition here
     } else {
