@@ -27,29 +27,32 @@ export default function Home() {
   const wordList = ['temper', 'outfit', 'served', 'fright', 'piston'];
 
   const [word, setWord] = useState(wordList[Math.floor(Math.random() * 5)]);
-  const [matches, setMatches] = useState({});
+  const [matches, setMatches] = useState({
+    1: {},
+    2: {},
+    3: {},
+    4: {},
+    5: {},
+    6: {},
+  });
 
   const checkWord = (guess, word) => {
-    console.log(guess, word);
+    let newMatches = {};
     for (let i = 0; i < guess.length; i++) {
       if (guess[i] === word[i]) {
         // * If letter matches exactly assign 0
-        setMatches((prevMatches) => {
-          return {
-            ...prevMatches,
-            [guess[i]]: 0,
-          };
-        });
+        newMatches[guess[i]] = 0;
       } else if (word.includes(guess[i])) {
         // * If letter is in the word but not correct place, assign 1
-        setMatches((prevMatches) => {
-          return {
-            ...prevMatches,
-            [guess[i]]: 1,
-          };
-        });
+        newMatches[guess[i]] = 1;
       }
     }
+    setMatches((prevMatches) => {
+      return {
+        ...prevMatches,
+        [currentRow]: newMatches,
+      };
+    });
   };
 
   const updateBoard = (newLetter) => {
