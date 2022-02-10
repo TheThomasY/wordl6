@@ -14,7 +14,7 @@ export default function GameBoard(props) {
             key={row}
             line={props.board[row]}
             row={row}
-            matches={props.matches}
+            matches={props.matches[row]}
           />
         ))}
       </div>
