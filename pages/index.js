@@ -28,6 +28,7 @@ export default function Home() {
 
   const [word, setWord] = useState(wordList[Math.floor(Math.random() * 5)]);
   const [matches, setMatches] = useState({
+    0: {},
     1: {},
     2: {},
     3: {},
@@ -107,7 +108,7 @@ export default function Home() {
       </Head>
       <Header />
       <GameBoard board={board} matches={matches} />
-      <Keyboard updateBoard={updateBoard} matches={matches} />
+      <Keyboard updateBoard={updateBoard} matches={matches[currentRow - 1]} />
     </div>
   );
 }

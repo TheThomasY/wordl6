@@ -11,6 +11,8 @@ export default function Key(props) {
   let keyVal = props.keyVal;
   let keyStyle = {};
 
+  // console.log(props.matches);
+
   if (props.keyVal === 'enter') {
     keyVal = <BsArrowReturnLeft />;
     keyStyle = { flexGrow: 1.5, fontSize: '2rem' };
