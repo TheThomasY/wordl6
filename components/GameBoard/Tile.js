@@ -1,20 +1,33 @@
-import React from 'react';
+// * React
+import React, { useState, useEffect } from 'react';
 
 // * Sass
 import styles from './Tile.module.scss';
 
 export default function Tile(props) {
-  let tileStyle = {};
+  const [tileStyle, setTileStyle] = useState({});
 
-  console.log(Object.keys(props.matches).length);
-
-  if (props.matches[props.letter] === 0) {
-    tileStyle = { backgroundColor: '#3e9f1c', color: 'white', border: 'none' };
-  } else if (props.matches[props.letter] === 1) {
-    tileStyle = { backgroundColor: '#c39318', color: 'white', border: 'none' };
-  } else if (props.matches[props.letter] === -1) {
-    tileStyle = { backgroundColor: '#787c7e', color: 'white', border: 'none' };
-  }
+  useEffect(() => {
+    if (props.matches[props.letter] === 0) {
+      setTileStyle({
+        backgroundColor: '#3e9f1c',
+        color: 'white',
+        border: 'none',
+      });
+    } else if (props.matches[props.letter] === 1) {
+      setTileStyle({
+        backgroundColor: '#c39318',
+        color: 'white',
+        border: 'none',
+      });
+    } else if (props.matches[props.letter] === -1) {
+      setTileStyle({
+        backgroundColor: '#787c7e',
+        color: 'white',
+        border: 'none',
+      });
+    }
+  }, [props.matches]);
 
   return (
     <div

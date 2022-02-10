@@ -89,7 +89,10 @@
   0% {
     -webkit-transform: rotateX(180deg);
     transform: rotateX(180deg);
-    background-color: white;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
   }
   100% {
     -webkit-transform: rotateX(360deg);
@@ -100,7 +103,10 @@
   0% {
     -webkit-transform: rotateX(180deg);
     transform: rotateX(180deg);
-    background-color: white;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
   }
   100% {
     -webkit-transform: rotateX(360deg);

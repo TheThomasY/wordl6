@@ -111,7 +111,7 @@ export default function Home() {
       </Head>
       <Header />
       <GameBoard board={board} matches={matches} />
-      <Keyboard updateBoard={updateBoard} matches={matches[currentRow - 1]} />
+      <Keyboard updateBoard={updateBoard} matches={matches} />
     </div>
   );
 }
