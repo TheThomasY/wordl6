@@ -1,18 +1,23 @@
-// Next
+// * Next
 import Head from 'next/head';
 
-// React
-import React, { useState } from 'react';
+// * React
+import React, { useEffect, useState } from 'react';
 
-// Components
+// * Components
 import Header from '../components/Header/Header';
 import GameBoard from '../components/GameBoard/GameBoard';
 import Keyboard from '../components/Keyboard/Keyboard';
 
-// Css
+// * Css
 import styles from '../styles/Home.module.scss';
 
+// * Data
+import data from '../word-list.json';
+
 export default function Home() {
+  const [word, setWord] = useState('answer');
+
   const [board, setBoard] = useState({
     1: '      ',
     2: '      ',
@@ -24,9 +29,6 @@ export default function Home() {
   const [currentRow, setCurrentRow] = useState(1);
   const [currentTile, setCurrentTile] = useState(0);
 
-  const wordList = ['temper', 'outfit', 'served', 'fright', 'piston'];
-
-  const [word, setWord] = useState(wordList[Math.floor(Math.random() * 5)]);
   const [matches, setMatches] = useState({
     0: {},
     1: {},
@@ -37,7 +39,17 @@ export default function Home() {
     6: {},
   });
 
+  // * Pick a random word in the answer list and assign that as the correct word
+  useEffect(() => {
+    setWord(
+      data['answer-words'][
+        Math.floor(Math.random() * data['answer-words'].length)
+      ]
+    );
+  }, []);
+
   const checkWord = (guess, word) => {
+    // * Check users guess against the answer
     let newMatches = {};
     for (let i = 0; i < guess.length; i++) {
       if (guess[i] === word[i]) {
@@ -60,6 +72,7 @@ export default function Home() {
   };
 
   const updateBoard = (newLetter) => {
+    // * Handles board updates due to user typing
     if (newLetter === 'back') {
       // Backspace Pressed: remove last letter
       if (currentTile !== 0) {
