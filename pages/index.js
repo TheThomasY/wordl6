@@ -102,7 +102,6 @@ export default function Home() {
           setCurrentTile(0);
         }
       }
-      // TODO - check for win condition here
     } else {
       // You can't click letters if current line is full
       if (!board[currentRow].includes(' ')) {
