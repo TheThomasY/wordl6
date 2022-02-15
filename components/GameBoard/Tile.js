@@ -8,26 +8,26 @@ export default function Tile(props) {
   const [tileStyle, setTileStyle] = useState({});
 
   useEffect(() => {
-    if (props.matches[props.letter] === 0) {
+    if (props.colour === 2) {
       setTileStyle({
         backgroundColor: '#3e9f1c',
         color: 'white',
         border: 'none',
       });
-    } else if (props.matches[props.letter] === 1) {
+    } else if (props.colour === 1) {
       setTileStyle({
         backgroundColor: '#c39318',
         color: 'white',
         border: 'none',
       });
-    } else if (props.matches[props.letter] === -1) {
+    } else if (props.colour === 0) {
       setTileStyle({
         backgroundColor: '#787c7e',
         color: 'white',
         border: 'none',
       });
     }
-  }, [props.matches]);
+  }, [props.colour]);
 
   return (
     <div
@@ -38,9 +38,9 @@ export default function Tile(props) {
           ? styles['tile-active'] + ' ' + styles['scale-up-center']
           : '') +
         ' ' +
-        (Object.keys(props.matches).length === 0
-          ? ''
-          : styles['flip-horizontal-top'])
+        (props.colour || props.colour === 0
+          ? styles['flip-horizontal-top']
+          : '')
       }
       style={tileStyle}
     >

@@ -39,6 +39,18 @@ export default function Home() {
     6: {},
   });
 
+  const [colours, setColours] = useState({
+    0: {},
+    1: {},
+    2: {},
+    3: {},
+    4: {},
+    5: {},
+    6: {},
+  });
+
+  const [bestMatch, setBestMatch] = useState({});
+
   // * Pick a random word in the answer list and assign that as the correct word
   useEffect(() => {
     setWord(
@@ -54,23 +66,54 @@ export default function Home() {
       return false;
     } else {
       // * Check users guess against the answer
-      let newMatches = {};
+      let colObj = {};
+
+      // * Arrays for answer and guess, used to assess orange tiles
+      let wordArr = word.split('');
+      let guessArr = guess.split('');
+
       for (let i = 0; i < guess.length; i++) {
         if (guess[i] === word[i]) {
-          // * If letter matches exactly assign 0
-          newMatches[guess[i]] = 0;
-        } else if (word.includes(guess[i])) {
-          // * If letter is in the word but not correct place, assign 1
-          newMatches[guess[i]] = 1;
-        } else {
-          // * If letter is not in the word, assign -1
-          newMatches[guess[i]] = -1;
+          // * If guess letter is exact, assign 2
+          colObj[i] = 2;
+          // * Then remove that letter from both arrays as it is certain
+          // * Placeholder - and _ to preserve indexes
+          wordArr[i] = '-';
+          guessArr[i] = '_';
+        } else if (!word.includes(guess[i])) {
+          // * If guess letter is not present in answer, assign 0
+          colObj[i] = 0;
+          // * Then remove that letter from just guess array
+          guessArr[i] = '_';
         }
       }
-      setMatches((prevMatches) => {
+
+      for (let i = 0; i < wordArr.length; i++) {
+        // * Loop over answer array which now contains only letters present in the
+        // * guess, but not in the correct place
+        if (guessArr.includes(wordArr[i])) {
+          // * Handle only case with letters
+
+          // * Letter present in answer but in wrong position so assign 1
+          colObj[guessArr.indexOf(wordArr[i])] = 1;
+
+          // * Remove letter from both guess and answer, avoids problems with duplicates
+          guessArr[guessArr.indexOf(wordArr[i])] = '_';
+          wordArr[i] = '-';
+        }
+      }
+
+      // * Handles edge case where a repeated letter isn't assigned a number
+      for (let i = 0; i < guessArr.length; i++) {
+        if (guessArr[i] !== '_') {
+          colObj[i] = 0;
+        }
+      }
+
+      setColours((prevColours) => {
         return {
-          ...prevMatches,
-          [currentRow]: newMatches,
+          ...prevColours,
+          [currentRow]: colObj,
         };
       });
       return true;
@@ -80,7 +123,7 @@ export default function Home() {
   const updateBoard = (newLetter) => {
     // * Handles board updates due to user typing
     if (newLetter === 'back') {
-      // Backspace Pressed: remove last letter
+      // * Backspace Pressed: remove last letter
       if (currentTile !== 0) {
         setBoard((prevBoard) => {
           return {
@@ -91,11 +134,11 @@ export default function Home() {
               prevBoard[currentRow].slice(currentTile),
           };
         });
-        // Reset current tile to previous
+        // * Reset current tile to previous
         setCurrentTile((prevCurrentTile) => prevCurrentTile - 1);
       }
     } else if (newLetter === 'enter') {
-      // Enter Pressed: go to new line
+      // * Enter Pressed: go to new line
       if (!board[currentRow].includes(' ') && currentRow < 6) {
         if (checkWord(board[currentRow], word)) {
           setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
@@ -103,11 +146,11 @@ export default function Home() {
         }
       }
     } else {
-      // You can't click letters if current line is full
+      // * You can't click letters if current line is full
       if (!board[currentRow].includes(' ')) {
         return;
       }
-      // Letter Pressed: add letter to current grid
+      // * Letter Pressed: add letter to current grid
       setBoard((prevBoard) => {
         return {
           ...prevBoard,
@@ -129,7 +172,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-      <GameBoard board={board} matches={matches} />
+      <GameBoard board={board} matches={matches} colours={colours} />
       <Keyboard updateBoard={updateBoard} matches={matches} />
     </div>
   );

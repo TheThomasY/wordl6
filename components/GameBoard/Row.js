@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // * Components
 import Tile from './Tile';
@@ -14,7 +14,7 @@ export default function Row(props) {
         <Tile
           key={props.row.toString() + square.toString()}
           letter={letter}
-          matches={props.matches}
+          colour={props.colours[square]}
         />
       ))}
     </div>
