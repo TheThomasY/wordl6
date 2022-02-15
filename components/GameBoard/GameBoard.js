@@ -6,6 +6,7 @@ import styles from './GameBoard.module.scss';
 
 export default function GameBoard(props) {
   const rows = [1, 2, 3, 4, 5, 6];
+
   return (
     <div className={styles.gameBoard}>
       <div className={styles.gameGrid}>
@@ -14,7 +15,7 @@ export default function GameBoard(props) {
             key={row}
             line={props.board[row]}
             row={row}
-            matches={props.matches[row]}
+            colours={props.colours[row]}
           />
         ))}
       </div>
