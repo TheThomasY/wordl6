@@ -29,16 +29,6 @@ export default function Home() {
   const [currentRow, setCurrentRow] = useState(1);
   const [currentTile, setCurrentTile] = useState(0);
 
-  const [matches, setMatches] = useState({
-    0: {},
-    1: {},
-    2: {},
-    3: {},
-    4: {},
-    5: {},
-    6: {},
-  });
-
   const [colours, setColours] = useState({
     0: {},
     1: {},
@@ -49,7 +39,7 @@ export default function Home() {
     6: {},
   });
 
-  const [bestMatch, setBestMatch] = useState({});
+  const [keyStatus, setKeyStatus] = useState({});
 
   // * Pick a random word in the answer list and assign that as the correct word
   useEffect(() => {
@@ -59,6 +49,19 @@ export default function Home() {
       ]
     );
   }, []);
+
+  const updateKeyStatus = (key, status) => {
+    console.log(key, status, keyStatus[key]);
+    if (!keyStatus[key] || status > keyStatus[key]) {
+      console.log('in if:', key, status, keyStatus[key]);
+      setKeyStatus((prevKeyStatus) => {
+        return {
+          ...prevKeyStatus,
+          [key]: status,
+        };
+      });
+    }
+  };
 
   const checkWord = (guess, word) => {
     if (data['guess-words'].indexOf(guess) === -1) {
@@ -75,16 +78,20 @@ export default function Home() {
       for (let i = 0; i < guess.length; i++) {
         if (guess[i] === word[i]) {
           // * If guess letter is exact, assign 2
-          colObj[i] = 2;
           // * Then remove that letter from both arrays as it is certain
           // * Placeholder - and _ to preserve indexes
+          colObj[i] = 2;
           wordArr[i] = '-';
           guessArr[i] = '_';
+
+          updateKeyStatus(guess[i], 2);
         } else if (!word.includes(guess[i])) {
           // * If guess letter is not present in answer, assign 0
-          colObj[i] = 0;
           // * Then remove that letter from just guess array
+          colObj[i] = 0;
           guessArr[i] = '_';
+
+          updateKeyStatus(guess[i], 0);
         }
       }
 
@@ -92,10 +99,11 @@ export default function Home() {
         // * Loop over answer array which now contains only letters present in the
         // * guess, but not in the correct place
         if (guessArr.includes(wordArr[i])) {
-          // * Handle only case with letters
+          // * Handle only cases with letters
 
           // * Letter present in answer but in wrong position so assign 1
           colObj[guessArr.indexOf(wordArr[i])] = 1;
+          updateKeyStatus(wordArr[i], 1);
 
           // * Remove letter from both guess and answer, avoids problems with duplicates
           guessArr[guessArr.indexOf(wordArr[i])] = '_';
@@ -172,8 +180,8 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-      <GameBoard board={board} matches={matches} colours={colours} />
-      <Keyboard updateBoard={updateBoard} matches={matches} />
+      <GameBoard board={board} colours={colours} />
+      <Keyboard updateBoard={updateBoard} keyStatus={keyStatus} />
     </div>
   );
 }

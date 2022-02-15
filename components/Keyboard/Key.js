@@ -23,15 +23,15 @@ export default function Key(props) {
 
   useEffect(() => {
     for (let i = 1; i < 7; i++) {
-      if (props.matches[i][keyVal] === '2') {
+      if (props.keyStatus[keyVal] === 2) {
         setKeyStyle({ backgroundColor: '#3e9f1c', color: 'white' });
-      } else if (props.matches[i][keyVal] === '1') {
+      } else if (props.keyStatus[keyVal] === 1) {
         setKeyStyle({ backgroundColor: '#c39318', color: 'white' });
-      } else if (props.matches[i][keyVal] === '0') {
+      } else if (props.keyStatus[keyVal] === 0) {
         setKeyStyle({ backgroundColor: '#787c7e', color: 'white' });
       }
     }
-  }, [props.matches]);
+  }, [props.keyStatus]);
 
   const letterClickedHandler = (event) => {
     props.updateBoard(event.currentTarget.id);

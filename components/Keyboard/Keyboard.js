@@ -20,7 +20,7 @@ export default function Keyboard(props) {
             key={keyVal}
             keyVal={keyVal}
             updateBoard={props.updateBoard}
-            matches={props.matches}
+            keyStatus={props.keyStatus}
           />
         ))}
       </div>
@@ -31,7 +31,7 @@ export default function Keyboard(props) {
             key={keyVal}
             keyVal={keyVal}
             updateBoard={props.updateBoard}
-            matches={props.matches}
+            keyStatus={props.keyStatus}
           />
         ))}
         <div className={styles.indent}></div>
@@ -42,7 +42,7 @@ export default function Keyboard(props) {
             key={keyVal}
             keyVal={keyVal}
             updateBoard={props.updateBoard}
-            matches={props.matches}
+            keyStatus={props.keyStatus}
           />
         ))}
       </div>
