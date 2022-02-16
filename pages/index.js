@@ -17,6 +17,7 @@ import data from '../word-list.json';
 
 export default function Home() {
   const [word, setWord] = useState('answer');
+  const [gameState, setGameState] = useState('playing');
 
   const [board, setBoard] = useState({
     1: '      ',
@@ -51,9 +52,7 @@ export default function Home() {
   }, []);
 
   const updateKeyStatus = (key, status) => {
-    console.log(key, status, keyStatus[key]);
     if (!keyStatus[key] || status > keyStatus[key]) {
-      console.log('in if:', key, status, keyStatus[key]);
       setKeyStatus((prevKeyStatus) => {
         return {
           ...prevKeyStatus,
@@ -100,7 +99,6 @@ export default function Home() {
         // * guess, but not in the correct place
         if (guessArr.includes(wordArr[i])) {
           // * Handle only cases with letters
-
           // * Letter present in answer but in wrong position so assign 1
           colObj[guessArr.indexOf(wordArr[i])] = 1;
           updateKeyStatus(wordArr[i], 1);
@@ -124,7 +122,11 @@ export default function Home() {
           [currentRow]: colObj,
         };
       });
-      return true;
+
+      return Object.values(colObj).includes(0) ||
+        Object.values(colObj).includes(1)
+        ? 'not won'
+        : 'won';
     }
   };
 
@@ -132,7 +134,7 @@ export default function Home() {
     // * Handles board updates due to user typing
     if (newLetter === 'back') {
       // * Backspace Pressed: remove last letter
-      if (currentTile !== 0) {
+      if (currentTile !== 0 && gameState === 'playing') {
         setBoard((prevBoard) => {
           return {
             ...prevBoard,
@@ -146,11 +148,17 @@ export default function Home() {
         setCurrentTile((prevCurrentTile) => prevCurrentTile - 1);
       }
     } else if (newLetter === 'enter') {
-      // * Enter Pressed: go to new line
-      if (!board[currentRow].includes(' ') && currentRow < 6) {
-        if (checkWord(board[currentRow], word)) {
-          setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
-          setCurrentTile(0);
+      // * Enter Pressed
+      if (!board[currentRow].includes(' ')) {
+        if (checkWord(board[currentRow], word) === 'won') {
+          setGameState('won');
+        } else if (checkWord(board[currentRow], word) === 'not won') {
+          if (currentRow < 6) {
+            setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
+            setCurrentTile(0);
+          } else {
+            setGameState('lost');
+          }
         }
       }
     } else {
