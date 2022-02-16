@@ -8,6 +8,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../components/Header/Header';
 import GameBoard from '../components/GameBoard/GameBoard';
 import Keyboard from '../components/Keyboard/Keyboard';
+import PopUp from '../components/UI/PopUp';
 
 // * Css
 import styles from '../styles/Home.module.scss';
@@ -17,6 +18,7 @@ import data from '../word-list.json';
 
 export default function Home() {
   const [word, setWord] = useState('answer');
+  const [gameState, setGameState] = useState('playing');
 
   const [board, setBoard] = useState({
     1: '      ',
@@ -41,6 +43,12 @@ export default function Home() {
 
   const [keyStatus, setKeyStatus] = useState({});
 
+  // * Pop Up Messages
+  const [messages, setMessages] = useState('VISION');
+  const clearMessages = () => {
+    setMessages('');
+  };
+
   // * Pick a random word in the answer list and assign that as the correct word
   useEffect(() => {
     setWord(
@@ -50,10 +58,16 @@ export default function Home() {
     );
   }, []);
 
+  useEffect(() => {
+    if (gameState === 'won') {
+      console.log('game won');
+    } else if (gameState === 'lost') {
+      console.log('game lost');
+    }
+  }, [gameState]);
+
   const updateKeyStatus = (key, status) => {
-    console.log(key, status, keyStatus[key]);
     if (!keyStatus[key] || status > keyStatus[key]) {
-      console.log('in if:', key, status, keyStatus[key]);
       setKeyStatus((prevKeyStatus) => {
         return {
           ...prevKeyStatus,
@@ -65,7 +79,7 @@ export default function Home() {
 
   const checkWord = (guess, word) => {
     if (data['guess-words'].indexOf(guess) === -1) {
-      console.log('not in word list');
+      setMessages('Not in word list');
       return false;
     } else {
       // * Check users guess against the answer
@@ -100,7 +114,6 @@ export default function Home() {
         // * guess, but not in the correct place
         if (guessArr.includes(wordArr[i])) {
           // * Handle only cases with letters
-
           // * Letter present in answer but in wrong position so assign 1
           colObj[guessArr.indexOf(wordArr[i])] = 1;
           updateKeyStatus(wordArr[i], 1);
@@ -124,7 +137,11 @@ export default function Home() {
           [currentRow]: colObj,
         };
       });
-      return true;
+
+      return Object.values(colObj).includes(0) ||
+        Object.values(colObj).includes(1)
+        ? 'not won'
+        : 'won';
     }
   };
 
@@ -132,7 +149,7 @@ export default function Home() {
     // * Handles board updates due to user typing
     if (newLetter === 'back') {
       // * Backspace Pressed: remove last letter
-      if (currentTile !== 0) {
+      if (currentTile !== 0 && gameState === 'playing') {
         setBoard((prevBoard) => {
           return {
             ...prevBoard,
@@ -146,11 +163,19 @@ export default function Home() {
         setCurrentTile((prevCurrentTile) => prevCurrentTile - 1);
       }
     } else if (newLetter === 'enter') {
-      // * Enter Pressed: go to new line
-      if (!board[currentRow].includes(' ') && currentRow < 6) {
-        if (checkWord(board[currentRow], word)) {
-          setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
-          setCurrentTile(0);
+      // * Enter Pressed
+      if (!board[currentRow].includes(' ')) {
+        if (checkWord(board[currentRow], word) === 'won') {
+          setGameState('won');
+          setMessages('Well done!');
+        } else if (checkWord(board[currentRow], word) === 'not won') {
+          if (currentRow < 6) {
+            setCurrentRow((prevCurrentRow) => prevCurrentRow + 1);
+            setCurrentTile(0);
+          } else {
+            setGameState('lost');
+            setMessages(word.toUpperCase());
+          }
         }
       }
     } else {
@@ -180,6 +205,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
+      <PopUp messages={messages} clearMessages={clearMessages} />
       <GameBoard board={board} colours={colours} />
       <Keyboard updateBoard={updateBoard} keyStatus={keyStatus} />
     </div>
