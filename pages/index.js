@@ -44,7 +44,7 @@ export default function Home() {
   const [keyStatus, setKeyStatus] = useState({});
 
   // * Pop Up Messages
-  const [messages, setMessages] = useState('VISION');
+  const [messages, setMessages] = useState('');
   const clearMessages = () => {
     setMessages('');
   };
