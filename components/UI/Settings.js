@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './Settings.module.scss';
 
 // React Icons
-import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineCopyrightCircle } from 'react-icons/ai';
 import { BiHelpCircle } from 'react-icons/bi';
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs';
 
@@ -27,23 +27,29 @@ export default function Settings(props) {
       <ul className={styles['setting-list']}>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>Hard Mode</div>
-          <BsToggleOff size={'2.5rem'} />
+          <BsToggleOff size={'2.5rem'} className={styles.toggle} />
         </li>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>Dark Theme</div>
-          <BsToggleOff size={'2.5rem'} />
+          <BsToggleOff size={'2.5rem'} className={styles.toggle} />
         </li>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>High Contrast Mode</div>
-          <BsToggleOff size={'2.5rem'} />
+          <BsToggleOff size={'2.5rem'} className={styles.toggle} />
         </li>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>Feedback</div>
+          <div className={styles.link}>Email</div>
         </li>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>Questions</div>
+          <div className={styles.link}>FAQ</div>
         </li>
       </ul>
+      <div className={styles.footer}>
+        <AiOutlineCopyrightCircle color='grey' />
+        <div>2022 Tom Young</div>
+      </div>
     </div>
   );
 }

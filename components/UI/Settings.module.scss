@@ -2,8 +2,12 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  max-width: 50rem;
   top: 0;
-  left: 0;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-50%);
   background-color: rgb(255, 255, 255);
   z-index: 3000;
 }
@@ -25,7 +29,8 @@
 }
 
 .help,
-.close {
+.close,
+.toggle {
   display: grid;
   place-items: center;
   cursor: pointer;
@@ -37,4 +42,22 @@
   justify-content: space-between;
   font-size: 1.8rem;
   border-bottom: 1px solid #d3d6da;
+}
+
+.link {
+  color: grey;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+
+  div {
+    margin-left: 0.5rem;
+    color: grey;
+  }
 }

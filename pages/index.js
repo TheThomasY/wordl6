@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   // * Settings Screen ------
-  const [showSettings, setShowSettings] = useState(true);
+  const [showSettings, setShowSettings] = useState(false);
 
   const toggleSettings = () => {
     setShowSettings((prevShowSettings) => {
