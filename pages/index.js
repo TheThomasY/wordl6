@@ -72,9 +72,32 @@ export default function Home() {
   };
 
   // * Dark Mode ------
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
-  const UserContext = createContext();
+  const toggleDarkMode = () => {
+    if (darkMode) {
+      setDarkMode(false);
+      document.querySelector('body').classList.remove('dark-body');
+    } else {
+      setDarkMode(true);
+      document.querySelector('body').classList.add('dark-body');
+    }
+  };
+
+  useEffect(() => {
+    // Add listener to update styles
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => setDarkMode(e.matches));
+    // Setup dark/light mode for the first time
+    setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    // Remove listener
+    return () => {
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', () => {});
+    };
+  }, []);
 
   // * Pick a random word in the answer list and assign that as the correct word
   useEffect(() => {
@@ -243,7 +266,11 @@ export default function Home() {
       />
       {showStats && <Modal toggleStats={toggleStats} darkMode={darkMode} />}
       {showSettings && (
-        <Settings toggleSettings={toggleSettings} darkMode={darkMode} />
+        <Settings
+          toggleSettings={toggleSettings}
+          darkMode={darkMode}
+          toggleDarkMode={toggleDarkMode}
+        />
       )}
       <GameBoard board={board} colours={colours} darkMode={darkMode} />
       <Keyboard
