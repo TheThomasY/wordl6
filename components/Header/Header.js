@@ -13,6 +13,9 @@ export default function Header(props) {
   const toggleStats = () => {
     props.toggleStats();
   };
+  const toggleSettings = () => {
+    props.toggleSettings();
+  };
 
   return (
     <div className={styles.header}>
@@ -30,7 +33,7 @@ export default function Header(props) {
         <div className={styles.stats} onClick={toggleStats}>
           <IoIosStats size={'3rem'} />
         </div>
-        <div className={styles.settings}>
+        <div className={styles.settings} onClick={toggleSettings}>
           <FiSettings size={'2.5rem'} />
         </div>
       </div>
