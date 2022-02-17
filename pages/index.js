@@ -9,6 +9,7 @@ import Header from '../components/Header/Header';
 import GameBoard from '../components/GameBoard/GameBoard';
 import Keyboard from '../components/Keyboard/Keyboard';
 import PopUp from '../components/UI/PopUp';
+import Modal from '../components/UI/Modal';
 
 // * Css
 import styles from '../styles/Home.module.scss';
@@ -206,6 +207,7 @@ export default function Home() {
       </Head>
       <Header />
       <PopUp messages={messages} clearMessages={clearMessages} />
+      <Modal />
       <GameBoard board={board} colours={colours} />
       <Keyboard updateBoard={updateBoard} keyStatus={keyStatus} />
     </div>
