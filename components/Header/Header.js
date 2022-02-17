@@ -20,7 +20,7 @@ export default function Header(props) {
         <div className={styles.help}>
           <BiHelpCircle size={'3rem'} />
         </div>
-        <div className={styles.streaks}>
+        <div className={styles.streaks} onClick={toggleStats}>
           <AiOutlineFire size={'3.5rem'} />
           <div className={styles['streak-count']}>0</div>
         </div>
