@@ -5,6 +5,7 @@ import styles from './Modal.module.scss';
 
 // React Icons
 import { AiOutlineClose } from 'react-icons/ai';
+import { AiOutlineFire } from 'react-icons/ai';
 
 export default function PopUp(props) {
   const toggleStats = () => {
@@ -18,6 +19,27 @@ export default function PopUp(props) {
           <AiOutlineClose size={'2rem'} />
         </div>
         <h2>Statistics</h2>
+        <div className={styles['modal-content']}>
+          <div className={styles['big-streak']}>
+            <AiOutlineFire size={'11rem'} />
+            <div className={styles['big-streak-val']}>0</div>
+            <div className=''>Current Streak</div>
+          </div>
+          <div className={styles['small-stats']}>
+            <div className={styles['small-stat-block']}>
+              <div className={styles['small-val']}>0</div>
+              <div className=''>Played</div>
+            </div>
+            <div className={styles['small-stat-block']}>
+              <div className={styles['small-val']}>0</div>
+              <div className=''>Win %</div>
+            </div>
+            <div className={styles['small-stat-block']}>
+              <div className={styles['small-val']}>0</div>
+              <div className=''>Max Streak</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
