@@ -99,6 +99,12 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    darkMode
+      ? document.querySelector('body').classList.remove('dark-body')
+      : document.querySelector('body').classList.add('dark-body');
+  }, []);
+
   // * Pick a random word in the answer list and assign that as the correct word
   useEffect(() => {
     setWord(
