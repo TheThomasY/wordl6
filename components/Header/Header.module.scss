@@ -1,14 +1,29 @@
 .header {
   height: 5rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #d3d6da;
 }
 
+.streaks {
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
 .title {
-  margin: 0 auto;
   font-size: 3.6rem;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
+}
+
+.stats {
+  width: 5rem;
+
+  display: grid;
+  place-items: center;
 }
