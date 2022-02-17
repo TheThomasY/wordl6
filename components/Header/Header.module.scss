@@ -1,13 +1,45 @@
 .header {
   height: 5rem;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #d3d6da;
 }
 
+.header-left,
+.header-right {
+  width: 7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.help,
+.settings,
+.stats {
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.streaks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.streak-count {
+  position: absolute;
+  top: 1rem;
+  left: 1.2rem;
+  font-size: 1.5rem;
+}
+
 .title {
-  margin: 0 auto;
   font-size: 3.6rem;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
