@@ -16,6 +16,7 @@ export default function GameBoard(props) {
             line={props.board[row]}
             row={row}
             colours={props.colours[row]}
+            darkMode={props.darkMode}
           />
         ))}
       </div>

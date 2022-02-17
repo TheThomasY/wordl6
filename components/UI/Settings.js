@@ -14,7 +14,9 @@ export default function Settings(props) {
   };
 
   return (
-    <div className={styles.settings}>
+    <div
+      className={styles.settings + ' ' + (props.darkMode ? styles.dark : '')}
+    >
       <div className={styles.header}>
         <div className={styles.help}>
           <BiHelpCircle size={'3rem'} />

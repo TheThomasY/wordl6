@@ -24,11 +24,23 @@ export default function Key(props) {
   useEffect(() => {
     for (let i = 1; i < 7; i++) {
       if (props.keyStatus[keyVal] === 2) {
-        setKeyStyle({ backgroundColor: '#3e9f1c', color: 'white' });
+        if (!props.darkMode) {
+          setKeyStyle({ backgroundColor: '#3e9f1c', color: 'white' });
+        } else {
+          setKeyStyle({ backgroundColor: '#538d4e', color: 'white' });
+        }
       } else if (props.keyStatus[keyVal] === 1) {
-        setKeyStyle({ backgroundColor: '#c39318', color: 'white' });
+        if (!props.darkMode) {
+          setKeyStyle({ backgroundColor: '#c39318', color: 'white' });
+        } else {
+          setKeyStyle({ backgroundColor: '#b59f3b', color: 'white' });
+        }
       } else if (props.keyStatus[keyVal] === 0) {
-        setKeyStyle({ backgroundColor: '#787c7e', color: 'white' });
+        if (!props.darkMode) {
+          setKeyStyle({ backgroundColor: '#787c7e', color: 'white' });
+        } else {
+          setKeyStyle({ backgroundColor: '#3a3a3c', color: 'white' });
+        }
       }
     }
   }, [props.keyStatus]);
@@ -40,7 +52,7 @@ export default function Key(props) {
   return (
     <button
       onClick={letterClickedHandler}
-      className={styles['key']}
+      className={styles['key'] + ' ' + (props.darkMode ? styles.dark : '')}
       style={keyStyle}
       id={props.keyVal}
     >

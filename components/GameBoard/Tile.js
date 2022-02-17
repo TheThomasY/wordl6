@@ -9,23 +9,47 @@ export default function Tile(props) {
 
   useEffect(() => {
     if (props.colour === 2) {
-      setTileStyle({
-        backgroundColor: '#3e9f1c',
-        color: 'white',
-        border: 'none',
-      });
+      if (!props.darkMode) {
+        setTileStyle({
+          backgroundColor: '#3e9f1c',
+          color: 'white',
+          border: 'none',
+        });
+      } else {
+        setTileStyle({
+          backgroundColor: '#538d4e',
+          color: 'white',
+          border: 'none',
+        });
+      }
     } else if (props.colour === 1) {
-      setTileStyle({
-        backgroundColor: '#c39318',
-        color: 'white',
-        border: 'none',
-      });
+      if (!props.darkMode) {
+        setTileStyle({
+          backgroundColor: '#c39318',
+          color: 'white',
+          border: 'none',
+        });
+      } else {
+        setTileStyle({
+          backgroundColor: '#b59f3b',
+          color: 'white',
+          border: 'none',
+        });
+      }
     } else if (props.colour === 0) {
-      setTileStyle({
-        backgroundColor: '#787c7e',
-        color: 'white',
-        border: 'none',
-      });
+      if (!props.darkMode) {
+        setTileStyle({
+          backgroundColor: '#787c7e',
+          color: 'white',
+          border: 'none',
+        });
+      } else {
+        setTileStyle({
+          backgroundColor: '#3a3a3c',
+          color: 'white',
+          border: 'none',
+        });
+      }
     }
   }, [props.colour]);
 
@@ -40,7 +64,9 @@ export default function Tile(props) {
         ' ' +
         (props.colour || props.colour === 0
           ? styles['flip-horizontal-top']
-          : '')
+          : '') +
+        ' ' +
+        (props.darkMode ? styles.dark : '')
       }
       style={tileStyle}
     >
