@@ -15,6 +15,7 @@ export default function Row(props) {
           key={props.row.toString() + square.toString()}
           letter={letter}
           colour={props.colours[square]}
+          darkMode={props.darkMode}
         />
       ))}
     </div>

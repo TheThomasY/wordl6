@@ -18,7 +18,7 @@ export default function Header(props) {
   };
 
   return (
-    <div className={styles.header}>
+    <div className={styles.header + ' ' + (props.darkMode ? styles.dark : '')}>
       <div className={styles['header-left']}>
         <div className={styles.help}>
           <BiHelpCircle size={'3rem'} />

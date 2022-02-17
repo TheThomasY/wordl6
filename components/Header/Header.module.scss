@@ -1,3 +1,5 @@
+$border-dark: #2d2d2e;
+
 .header {
   height: 5rem;
   padding: 0 1rem;
@@ -5,6 +7,10 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #d3d6da;
+}
+
+.dark {
+  border-bottom: 1px solid $border-dark;
 }
 
 .header-left,

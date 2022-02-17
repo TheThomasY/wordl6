@@ -13,7 +13,7 @@ export default function PopUp(props) {
   };
 
   return (
-    <div className={styles.overlay}>
+    <div className={styles.overlay + ' ' + (props.darkMode ? styles.dark : '')}>
       <div className={styles.modal}>
         <div onClick={toggleStats} className={styles.close}>
           <AiOutlineClose size={'3rem'} />

@@ -23,7 +23,7 @@ export default function PopUp(props) {
   }, [showMessage]);
 
   return (
-    <div className={styles.popup}>
+    <div className={styles.popup + ' ' + (props.darkMode ? styles.dark : '')}>
       {showMessage && <p className={styles.message}>{props.messages}</p>}
     </div>
   );

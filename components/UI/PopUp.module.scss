@@ -1,3 +1,6 @@
+$bg: white;
+$bg-dark: #383838;
+
 .popup {
   position: absolute;
   top: 15%;
@@ -10,6 +13,13 @@
   padding: 1.5rem 2rem;
   border-radius: 0.5rem;
   font-weight: 700;
-  background-color: black;
+  background-color: $bg-dark;
   color: white;
+}
+
+.dark {
+  .message {
+    background-color: white;
+    color: $bg-dark;
+  }
 }

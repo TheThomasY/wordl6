@@ -1,3 +1,7 @@
+$bg: white;
+$bg-dark: #121213;
+$border-dark: #2d2d2e;
+
 .tile {
   margin: 0 auto;
   height: 100%;
@@ -14,8 +18,18 @@
   border-radius: 0.5rem;
 }
 
+.dark {
+  border-color: $border-dark;
+}
+
 .tile-active {
   border: 2px solid #878a8c;
+}
+
+.dark {
+  .tile-active {
+    border-color: $border-dark;
+  }
 }
 
 @media (max-height: 550px) {

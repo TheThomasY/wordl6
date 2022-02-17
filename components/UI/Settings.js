@@ -13,8 +13,14 @@ export default function Settings(props) {
     props.toggleSettings();
   };
 
+  const toggleDarkMode = () => {
+    props.toggleDarkMode();
+  };
+
   return (
-    <div className={styles.settings}>
+    <div
+      className={styles.settings + ' ' + (props.darkMode ? styles.dark : '')}
+    >
       <div className={styles.header}>
         <div className={styles.help}>
           <BiHelpCircle size={'3rem'} />
@@ -31,7 +37,13 @@ export default function Settings(props) {
         </li>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>Dark Theme</div>
-          <BsToggleOff size={'2.5rem'} className={styles.toggle} />
+          <div onClick={toggleDarkMode}>
+            {!props.darkMode ? (
+              <BsToggleOff size={'2.5rem'} className={styles.toggle} />
+            ) : (
+              <BsToggleOn size={'2.5rem'} className={styles.toggle} />
+            )}
+          </div>
         </li>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>High Contrast Mode</div>

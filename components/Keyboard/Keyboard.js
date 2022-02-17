@@ -21,6 +21,7 @@ export default function Keyboard(props) {
             keyVal={keyVal}
             updateBoard={props.updateBoard}
             keyStatus={props.keyStatus}
+            darkMode={props.darkMode}
           />
         ))}
       </div>
@@ -32,6 +33,7 @@ export default function Keyboard(props) {
             keyVal={keyVal}
             updateBoard={props.updateBoard}
             keyStatus={props.keyStatus}
+            darkMode={props.darkMode}
           />
         ))}
         <div className={styles.indent}></div>
@@ -43,6 +45,7 @@ export default function Keyboard(props) {
             keyVal={keyVal}
             updateBoard={props.updateBoard}
             keyStatus={props.keyStatus}
+            darkMode={props.darkMode}
           />
         ))}
       </div>
