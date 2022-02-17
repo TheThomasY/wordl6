@@ -30,3 +30,11 @@
   place-items: center;
   cursor: pointer;
 }
+
+.setting {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.8rem;
+  border-bottom: 1px solid #d3d6da;
+}
