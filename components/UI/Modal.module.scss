@@ -26,7 +26,7 @@
 
   h2 {
     margin-top: 1rem;
-    font-size: 2rem;
+    font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 0.15rem;
   }
@@ -34,6 +34,7 @@
 
 .close {
   margin-left: auto;
+  cursor: pointer;
 }
 
 .modal-content {
@@ -62,11 +63,15 @@
   transform: translateX(-50%);
 }
 
-.small-stats,
-.small-stats-vals {
+.big-streak-label {
+  margin-top: 1rem;
+}
+
+.small-stats {
   width: 100%;
   margin-top: 3rem;
   padding: 1rem;
+  padding-bottom: 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

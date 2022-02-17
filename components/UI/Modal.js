@@ -16,14 +16,14 @@ export default function PopUp(props) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <div onClick={toggleStats} className={styles.close}>
-          <AiOutlineClose size={'2rem'} />
+          <AiOutlineClose size={'3rem'} />
         </div>
         <h2>Statistics</h2>
         <div className={styles['modal-content']}>
           <div className={styles['big-streak']}>
             <AiOutlineFire size={'11rem'} />
             <div className={styles['big-streak-val']}>0</div>
-            <div className=''>Current Streak</div>
+            <div className={styles['big-streak-label']}>Current Streak</div>
           </div>
           <div className={styles['small-stats']}>
             <div className={styles['small-stat-block']}>

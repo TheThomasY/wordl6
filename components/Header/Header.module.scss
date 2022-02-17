@@ -16,9 +16,11 @@
 }
 
 .help,
-.settings {
+.settings,
+.stats {
   display: grid;
   place-items: center;
+  cursor: pointer;
 }
 
 .streaks {
@@ -27,6 +29,7 @@
   align-items: center;
   font-size: 2rem;
   position: relative;
+  cursor: pointer;
 }
 
 .streak-count {
@@ -40,9 +43,4 @@
   font-size: 3.6rem;
   text-transform: uppercase;
   letter-spacing: 0.25rem;
-}
-
-.stats {
-  display: grid;
-  place-items: center;
 }
