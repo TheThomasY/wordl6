@@ -8,6 +8,12 @@ export default function Tile(props) {
   const [tileStyle, setTileStyle] = useState({});
 
   useEffect(() => {
+    if (!props.colour) {
+      setTileStyle({
+        backgroundColor: 'transparent',
+      });
+    }
+
     if (props.colour === 2) {
       if (!props.darkMode) {
         setTileStyle({

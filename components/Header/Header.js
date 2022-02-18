@@ -25,7 +25,9 @@ export default function Header(props) {
         </div>
         <div className={styles.streaks} onClick={toggleStats}>
           <AiOutlineFire size={'3.5rem'} />
-          <div className={styles['streak-count']}>0</div>
+          <div className={styles['streak-count']}>
+            {props.stats.currentStreak}
+          </div>
         </div>
       </div>
       <h1 className={styles.title}>Wordl6</h1>

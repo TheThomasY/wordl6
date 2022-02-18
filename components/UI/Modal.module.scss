@@ -19,13 +19,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: 1px solid #f6f7f8;
   background-color: #fff;
   box-shadow: 0 4px 23px 0 rgb(0 0 0 / 20%);
 
   h2 {
-    margin-top: 1rem;
     font-size: 3rem;
     text-transform: uppercase;
     letter-spacing: 0.15rem;
@@ -89,6 +88,23 @@
   font-size: 2.5rem;
 }
 
+.new-word-btn {
+  margin: 2rem 1rem;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  color: #ffffff;
+  background-color: #121213;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #818384;
+  }
+}
+
 // * Dark Mode
 .dark {
   background-color: rgba(0, 0, 0, 0.5);
@@ -96,5 +112,14 @@
   .modal {
     border-color: #1a1a1b;
     background-color: #121213;
+  }
+
+  .new-word-btn {
+    color: #121213;
+    background-color: #ffffff;
+
+    &:hover {
+      background-color: #d3d6da;
+    }
   }
 }
