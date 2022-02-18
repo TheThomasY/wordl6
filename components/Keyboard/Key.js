@@ -23,6 +23,25 @@ export default function Key(props) {
 
   useEffect(() => {
     for (let i = 1; i < 7; i++) {
+      if (!props.keyStatus[keyVal]) {
+        if (!props.darkMode) {
+          setKeyStyle((prevKeyStyle) => {
+            return {
+              ...prevKeyStyle,
+              backgroundColor: '#d3d6da',
+              color: 'black',
+            };
+          });
+        } else {
+          setKeyStyle((prevKeyStyle) => {
+            return {
+              ...prevKeyStyle,
+              backgroundColor: '#818384',
+              color: 'white',
+            };
+          });
+        }
+      }
       if (props.keyStatus[keyVal] === 2) {
         if (!props.darkMode) {
           setKeyStyle({ backgroundColor: '#6aaa64', color: 'white' });

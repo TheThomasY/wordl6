@@ -12,58 +12,48 @@ export default function Tile(props) {
       setTileStyle({
         backgroundColor: 'transparent',
       });
-    } else {
-      setTileStyle({
-        color: 'white',
-        border: 'none',
-      });
     }
 
     if (props.colour === 2) {
       if (!props.darkMode) {
-        // backgroundColor: '#6aaa64',
         setTileStyle({
+          backgroundColor: '#6aaa64',
           color: 'white',
           border: 'none',
         });
       } else {
-        setTileStyle((prevTileStyle) => {
-          return {
-            ...prevTileStyle,
-            backgroundColor: '#538d4e',
-          };
+        setTileStyle({
+          backgroundColor: '#538d4e',
+          color: 'white',
+          border: 'none',
         });
       }
     } else if (props.colour === 1) {
       if (!props.darkMode) {
-        setTileStyle((prevTileStyle) => {
-          return {
-            ...prevTileStyle,
-            backgroundColor: '#c9b458',
-          };
+        setTileStyle({
+          backgroundColor: '#c9b458',
+          color: 'white',
+          border: 'none',
         });
       } else {
-        setTileStyle((prevTileStyle) => {
-          return {
-            ...prevTileStyle,
-            backgroundColor: '#b59f3b',
-          };
+        setTileStyle({
+          backgroundColor: '#b59f3b',
+          color: 'white',
+          border: 'none',
         });
       }
     } else if (props.colour === 0) {
       if (!props.darkMode) {
-        setTileStyle((prevTileStyle) => {
-          return {
-            ...prevTileStyle,
-            backgroundColor: '#787c7e',
-          };
+        setTileStyle({
+          backgroundColor: '#787c7e',
+          color: 'white',
+          border: 'none',
         });
       } else {
-        setTileStyle((prevTileStyle) => {
-          return {
-            ...prevTileStyle,
-            backgroundColor: '#3a3a3c',
-          };
+        setTileStyle({
+          backgroundColor: '#3a3a3c',
+          color: 'white',
+          border: 'none',
         });
       }
     }
