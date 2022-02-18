@@ -25,13 +25,13 @@ export default function Key(props) {
     for (let i = 1; i < 7; i++) {
       if (props.keyStatus[keyVal] === 2) {
         if (!props.darkMode) {
-          setKeyStyle({ backgroundColor: '#3e9f1c', color: 'white' });
+          setKeyStyle({ backgroundColor: '#6aaa64', color: 'white' });
         } else {
           setKeyStyle({ backgroundColor: '#538d4e', color: 'white' });
         }
       } else if (props.keyStatus[keyVal] === 1) {
         if (!props.darkMode) {
-          setKeyStyle({ backgroundColor: '#c39318', color: 'white' });
+          setKeyStyle({ backgroundColor: '#c9b458', color: 'white' });
         } else {
           setKeyStyle({ backgroundColor: '#b59f3b', color: 'white' });
         }
@@ -43,7 +43,7 @@ export default function Key(props) {
         }
       }
     }
-  }, [props.keyStatus]);
+  }, [props.keyStatus, props.darkMode]);
 
   const letterClickedHandler = (event) => {
     props.updateBoard(event.currentTarget.id);
