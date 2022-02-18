@@ -2,7 +2,7 @@
 import Head from 'next/head';
 
 // * React
-import React, { useEffect, useState, createContext, useContext } from 'react';
+import React, { useEffect, useState, useLayoutEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 // * Components
@@ -99,7 +99,7 @@ export default function Home() {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     darkMode
       ? document.querySelector('body').classList.remove('dark-body')
       : document.querySelector('body').classList.add('dark-body');

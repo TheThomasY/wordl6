@@ -11,7 +11,7 @@ export default function Tile(props) {
     if (props.colour === 2) {
       if (!props.darkMode) {
         setTileStyle({
-          backgroundColor: '#3e9f1c',
+          backgroundColor: '#6aaa64',
           color: 'white',
           border: 'none',
         });
@@ -25,7 +25,7 @@ export default function Tile(props) {
     } else if (props.colour === 1) {
       if (!props.darkMode) {
         setTileStyle({
-          backgroundColor: '#c39318',
+          backgroundColor: '#c9b458',
           color: 'white',
           border: 'none',
         });
@@ -51,7 +51,7 @@ export default function Tile(props) {
         });
       }
     }
-  }, [props.colour]);
+  }, [props.colour, props.darkMode]);
 
   return (
     <div
