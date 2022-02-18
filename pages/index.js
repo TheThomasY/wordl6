@@ -54,6 +54,31 @@ export default function Home() {
 
   // * Statistics Modal ------
   const [showStats, setShowStats] = useState(false);
+  const [stats, setStats] = useState({
+    currentStreak: 0,
+    played: 0,
+    wins: 0,
+    maxStreak: 0,
+  });
+
+  useEffect(() => {
+    if (localStorage.getItem('currentStreak') === null) {
+      // * Create local storage if none exists
+      localStorage.setItem('currentStreak', 0);
+      localStorage.setItem('played', 0);
+      localStorage.setItem('wins', 0);
+      localStorage.setItem('maxStreak', 0);
+    } else {
+      // * If data does exists, get and set as state
+      setStats({
+        currentStreak: parseInt(localStorage.getItem('currentStreak')),
+        played: parseInt(localStorage.getItem('played')),
+        wins: parseInt(localStorage.getItem('wins')),
+        maxStreak: parseInt(localStorage.getItem('maxStreak')),
+      });
+    }
+    // localStorage.clear();
+  }, []);
 
   const toggleStats = () => {
     setShowStats((prevShowStats) => {
@@ -140,12 +165,57 @@ export default function Home() {
     newGame();
   }, []);
 
+  const saveStats = () => {
+    localStorage.setItem('currentStreak', stats.currentStreak);
+    localStorage.setItem('played', stats.played);
+    localStorage.setItem('wins', stats.wins);
+    localStorage.setItem('maxStreak', stats.maxStreak);
+  };
+
+  const updateStats = (result) => {
+    if (result === 'win') {
+      if (stats.currentStreak === stats.maxStreak) {
+        setStats((prevStats) => {
+          return {
+            ...prevStats,
+            currentStreak: prevStats.currentStreak + 1,
+            played: prevStats.played + 1,
+            wins: prevStats.wins + 1,
+            maxStreak: prevStats.maxStreak + 1,
+          };
+        });
+      } else {
+        setStats((prevStats) => {
+          return {
+            ...prevStats,
+            currentStreak: prevStats.currentStreak + 1,
+            played: prevStats.played + 1,
+            wins: prevStats.wins + 1,
+          };
+        });
+      }
+    } else if (result === 'lost') {
+      setStats((prevStats) => {
+        return {
+          ...prevStats,
+          currentStreak: 0,
+          played: prevStats.played + 1,
+        };
+      });
+    }
+  };
+
   // * End game handling
   useEffect(() => {
     if (gameState !== 'playing') {
       setTimeout(function () {
         setShowStats(true);
       }, 1500);
+    }
+    if (gameState === 'won') {
+      updateStats('win');
+    } else if (gameState === 'lost') {
+      updateStats('lost');
     }
   }, [gameState]);
 
@@ -295,6 +365,7 @@ export default function Home() {
         toggleStats={toggleStats}
         toggleSettings={toggleSettings}
         darkMode={darkMode}
+        stats={stats}
       />
       <PopUp
         messages={messages}
@@ -307,6 +378,7 @@ export default function Home() {
           darkMode={darkMode}
           gameState={gameState}
           newWord={newGame}
+          stats={stats}
         />
       )}
       {showSettings && (
