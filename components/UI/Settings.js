@@ -32,8 +32,14 @@ export default function Settings(props) {
       </div>
       <ul className={styles['setting-list']}>
         <li className={styles.setting}>
-          <div className={styles['setting-label']}>Hard Mode</div>
-          <BsToggleOff size={'2.5rem'} className={styles.toggle} />
+          <div style={{ color: 'grey' }} className={styles['setting-label']}>
+            Hard Mode
+          </div>
+          <BsToggleOff
+            size={'2.5rem'}
+            className={styles.toggle}
+            color={'grey'}
+          />
         </li>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>Dark Theme</div>
@@ -46,8 +52,14 @@ export default function Settings(props) {
           </div>
         </li>
         <li className={styles.setting}>
-          <div className={styles['setting-label']}>High Contrast Mode</div>
-          <BsToggleOff size={'2.5rem'} className={styles.toggle} />
+          <div style={{ color: 'grey' }} className={styles['setting-label']}>
+            High Contrast Mode
+          </div>
+          <BsToggleOff
+            size={'2.5rem'}
+            className={styles.toggle}
+            color={'grey'}
+          />
         </li>
         <li className={styles.setting}>
           <div className={styles['setting-label']}>Feedback</div>
