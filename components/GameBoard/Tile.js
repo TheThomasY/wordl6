@@ -8,46 +8,62 @@ export default function Tile(props) {
   const [tileStyle, setTileStyle] = useState({});
 
   useEffect(() => {
+    if (!props.colour) {
+      setTileStyle({
+        backgroundColor: 'transparent',
+      });
+    } else {
+      setTileStyle({
+        color: 'white',
+        border: 'none',
+      });
+    }
+
     if (props.colour === 2) {
       if (!props.darkMode) {
+        // backgroundColor: '#6aaa64',
         setTileStyle({
-          backgroundColor: '#6aaa64',
           color: 'white',
           border: 'none',
         });
       } else {
-        setTileStyle({
-          backgroundColor: '#538d4e',
-          color: 'white',
-          border: 'none',
+        setTileStyle((prevTileStyle) => {
+          return {
+            ...prevTileStyle,
+            backgroundColor: '#538d4e',
+          };
         });
       }
     } else if (props.colour === 1) {
       if (!props.darkMode) {
-        setTileStyle({
-          backgroundColor: '#c9b458',
-          color: 'white',
-          border: 'none',
+        setTileStyle((prevTileStyle) => {
+          return {
+            ...prevTileStyle,
+            backgroundColor: '#c9b458',
+          };
         });
       } else {
-        setTileStyle({
-          backgroundColor: '#b59f3b',
-          color: 'white',
-          border: 'none',
+        setTileStyle((prevTileStyle) => {
+          return {
+            ...prevTileStyle,
+            backgroundColor: '#b59f3b',
+          };
         });
       }
     } else if (props.colour === 0) {
       if (!props.darkMode) {
-        setTileStyle({
-          backgroundColor: '#787c7e',
-          color: 'white',
-          border: 'none',
+        setTileStyle((prevTileStyle) => {
+          return {
+            ...prevTileStyle,
+            backgroundColor: '#787c7e',
+          };
         });
       } else {
-        setTileStyle({
-          backgroundColor: '#3a3a3c',
-          color: 'white',
-          border: 'none',
+        setTileStyle((prevTileStyle) => {
+          return {
+            ...prevTileStyle,
+            backgroundColor: '#3a3a3c',
+          };
         });
       }
     }

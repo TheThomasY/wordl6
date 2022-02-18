@@ -12,6 +12,10 @@ export default function PopUp(props) {
     props.toggleStats();
   };
 
+  const newWord = () => {
+    props.newWord();
+  };
+
   return (
     <div className={styles.overlay + ' ' + (props.darkMode ? styles.dark : '')}>
       <div className={styles.modal}>
@@ -40,6 +44,11 @@ export default function PopUp(props) {
             </div>
           </div>
         </div>
+        {props.gameState !== 'playing' && (
+          <button onClick={newWord} className={styles['new-word-btn']}>
+            New Word
+          </button>
+        )}
       </div>
     </div>
   );

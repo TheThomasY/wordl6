@@ -19,7 +19,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: 1px solid #f6f7f8;
   background-color: #fff;
   box-shadow: 0 4px 23px 0 rgb(0 0 0 / 20%);
@@ -87,6 +87,15 @@
 
 .small-val {
   font-size: 2.5rem;
+}
+
+.new-word-btn {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
 }
 
 // * Dark Mode
