@@ -165,12 +165,15 @@ export default function Home() {
     newGame();
   }, []);
 
-  const saveStats = () => {
-    localStorage.setItem('currentStreak', stats.currentStreak);
-    localStorage.setItem('played', stats.played);
-    localStorage.setItem('wins', stats.wins);
-    localStorage.setItem('maxStreak', stats.maxStreak);
-  };
+  useEffect(() => {
+    console.log(stats);
+    if (stats.played !== 0) {
+      localStorage.setItem('currentStreak', stats.currentStreak);
+      localStorage.setItem('played', stats.played);
+      localStorage.setItem('wins', stats.wins);
+      localStorage.setItem('maxStreak', stats.maxStreak);
+    }
+  }, [stats]);
 
   const updateStats = (result) => {
     if (result === 'win') {
