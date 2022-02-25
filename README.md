@@ -26,6 +26,7 @@ There is a known bug with the colour scheme on some devices. If the game text lo
 - [ ] FIX: Light/dark mode auto select causes flicker on page load
 - [ ] ADD: State management/refactor in index.js
 - [ ] ADD: High contrast mode
+- [ ] ADD: Instructions page
 
 ## Changelog
 
