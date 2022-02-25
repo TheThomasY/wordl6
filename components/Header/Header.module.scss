@@ -6,10 +6,12 @@ $border-dark: #2d2d2e;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #000000;
   border-bottom: 1px solid #d3d6da;
 }
 
 .dark {
+  color: white;
   border-bottom: 1px solid $border-dark;
 }
 
