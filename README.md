@@ -1,6 +1,8 @@
 <h1 align="center">Wordl6</h1>
 
-This is my recreation of the game [Wordle](https://www.nytimes.com/games/wordle/index.html 'Link to Wordle')
+This is my recreation of the popular game [Wordle](https://www.nytimes.com/games/wordle/index.html 'Link to Wordle') but with 6 letter words instead of 5. It will keep track of games played and won, see how many you can get correct in a row. 
+
+There is a known bug with the colour scheme on some devices. If the game text loads in black, go to settings (top right of navbar) and click the dark mode toggle. This will fix it and I am actively working on a solution. 
 
 ## Links 🌟
 
