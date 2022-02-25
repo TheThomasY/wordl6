@@ -1,34 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Wordl6</h1>
 
-## Getting Started
+This is my recreation of the game [Wordle](https://www.nytimes.com/games/wordle/index.html 'Link to Wordle')
 
-First, run the development server:
+## Links 🌟
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Live site: [Try it out here 💻](https://wordl6-9ykof8r3j-thethomasy.vercel.app/ 'Live View')
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Screenshots 📷
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<p float="left">
+  <img src="./screenshots/screenshot-GIF-desktop.gif">
+<!--   <img src="./screenshots/screenshot-mobile.png" width="300px"> -->
+</p>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Built With 🛠
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+- Scss
 
-## Learn More
+## Future Updates 🎁
 
-To learn more about Next.js, take a look at the following resources:
+- [ ] FIX: Known issues on Safari browser
+- [ ] FIX: Light/dark mode auto select causes flicker on page load
+- [ ] ADD: High contrast mode
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Changelog
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **[1.0.0] 18/02/22 Deployment**: Working version deployed 
 
-## Deploy on Vercel
+## Author 🧑
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Tom Young**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [Github Profile 👨‍💻](https://github.com/TheThomasY)
+- [Email ✉](mailto:tomyoungdev@gmail.com?subject=Hi 'Hi!')
+- [LinkedIn 💼](https://www.linkedin.com/in/tom-young5555/)
+- [Dev.to 🖊](https://dev.to/thetomy)
+
+Give a ⭐️ if you like this project!
+
+
+
