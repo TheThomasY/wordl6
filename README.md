@@ -18,7 +18,7 @@ There is a known bug with the colour scheme on some devices. If the game text lo
 ## Built With 🛠
 
 - [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-- Scss
+- [Sass](https://sass-lang.com/)
 
 ## Future Updates 🎁
 
