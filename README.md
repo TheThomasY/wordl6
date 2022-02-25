@@ -11,7 +11,7 @@ There is a known bug with the colour scheme on some devices. If the game text lo
 ## Screenshots 📷
 
 <p float="left">
-  <img src="./screenshots/screenshot-GIF-desktop.gif">
+  <img src="./screenshots/screenshot-GIF-desktop.gif" width="500px">
 <!--   <img src="./screenshots/screenshot-mobile.png" width="300px"> -->
 </p>
 
@@ -24,6 +24,7 @@ There is a known bug with the colour scheme on some devices. If the game text lo
 
 - [ ] FIX: Known issues on Safari browser
 - [ ] FIX: Light/dark mode auto select causes flicker on page load
+- [ ] ADD: State management/refactor in index.js
 - [ ] ADD: High contrast mode
 
 ## Changelog
