@@ -22,7 +22,7 @@ There is a known bug with the colour scheme on some devices. If the game text lo
 
 ## Future Updates 🎁
 
-- [ ] FIX: Known issues on Safari browser
+- [ ] FIX: Known issues on Safari browser with colours and popup appearing behind grid
 - [ ] FIX: Light/dark mode auto select causes flicker on page load
 - [ ] ADD: State management/refactor in index.js
 - [ ] ADD: High contrast mode
