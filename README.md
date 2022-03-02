@@ -6,7 +6,7 @@ There is a known bug with the colour scheme on some devices. If the game text lo
 
 ## Links 🌟
 
-- Live site: [Try it out here 💻](https://wordl6-9ykof8r3j-thethomasy.vercel.app/ 'Live View')
+- Live site: [Try it out here 💻](https://wordl6.vercel.app/ 'Live View')
 
 ## Screenshots 📷
 
