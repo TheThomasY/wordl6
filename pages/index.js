@@ -61,6 +61,7 @@ export default function Home() {
     maxStreak: 0,
   });
 
+  // * Check local storage at start
   useEffect(() => {
     if (localStorage.getItem('currentStreak') === null) {
       // * Create local storage if none exists
@@ -80,6 +81,7 @@ export default function Home() {
     // localStorage.clear();
   }, []);
 
+  // * Toggle stats modal
   const toggleStats = () => {
     setShowStats((prevShowStats) => {
       return !prevShowStats;
@@ -108,6 +110,7 @@ export default function Home() {
     }
   };
 
+  // * Check browser theme preference
   useLayoutEffect(() => {
     // Add listener to update styles
     window
@@ -129,9 +132,10 @@ export default function Home() {
       : document.querySelector('body').classList.add('dark-body');
   }, []);
 
-  // * Pick a random word in the answer list and assign that as the correct word
+  // * New game set/reset
   const newGame = () => {
     setGameState('playing');
+    // * Pick a random word in the answer list and assign that as the correct word
     setWord(
       data['answer-words'][
         Math.floor(Math.random() * data['answer-words'].length)
