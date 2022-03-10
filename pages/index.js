@@ -246,7 +246,7 @@ export default function Home() {
     // localStorage.clear();
   }, []);
 
-  // * Own fn: given a result, update stats state
+  // * Given a result (win/loss), update stats state
   const updateStats = (result) => {
     if (result === 'win') {
       if (stats.currentStreak === stats.maxStreak) {

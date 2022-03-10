@@ -8,9 +8,19 @@ import { BsArrowReturnLeft, BsBackspace } from 'react-icons/bs';
 import styles from './Key.module.scss';
 
 export default function Key(props) {
+  // * -------------------------------------------------------
+  // * Keyboard Keys
+  // * -------------------------------------------------------
+  // * STATE:
   const [keyVal, setKeyVal] = useState(props.keyVal);
   const [keyStyle, setKeyStyle] = useState({});
 
+  // * Pass letter value to parent if clicked
+  const letterClickedHandler = (event) => {
+    props.updateBoard(event.currentTarget.id);
+  };
+
+  // * On mount: increase width of backspace and enter
   useEffect(() => {
     if (props.keyVal === 'enter') {
       setKeyVal(<BsArrowReturnLeft />);
@@ -21,9 +31,11 @@ export default function Key(props) {
     }
   }, []);
 
+  // * Assign key style. Update if key value or theme changes
   useEffect(() => {
     for (let i = 1; i < 7; i++) {
       if (!props.keyStatus[keyVal]) {
+        // * If this key hasn't been pressed yet, i.e. no keyStatus data
         if (!props.darkMode) {
           setKeyStyle((prevKeyStyle) => {
             return {
@@ -42,6 +54,7 @@ export default function Key(props) {
           });
         }
       }
+      // * Now deal with green/yellow/grey letters
       if (props.keyStatus[keyVal] === 2) {
         if (!props.darkMode) {
           setKeyStyle({ backgroundColor: '#6aaa64', color: 'white' });
@@ -63,10 +76,6 @@ export default function Key(props) {
       }
     }
   }, [props.keyStatus, props.darkMode]);
-
-  const letterClickedHandler = (event) => {
-    props.updateBoard(event.currentTarget.id);
-  };
 
   return (
     <button

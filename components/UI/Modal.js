@@ -16,6 +16,7 @@ export default function PopUp(props) {
     props.newWord();
   };
 
+  // * Calculate "win percentage" from "wins" and "played"
   let winPerc =
     props.stats.wins === 0
       ? 0

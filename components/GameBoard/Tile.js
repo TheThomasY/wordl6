@@ -5,8 +5,13 @@ import React, { useState, useEffect } from 'react';
 import styles from './Tile.module.scss';
 
 export default function Tile(props) {
+  // * -------------------------------------------------------
+  // * Applying relevant colour to each tile
+  // * -------------------------------------------------------
+  // * STATE:
   const [tileStyle, setTileStyle] = useState({});
 
+  // * Update if tile colour or theme changes
   useEffect(() => {
     if (!props.colour) {
       setTileStyle({

@@ -8,6 +8,7 @@ import styles from './Row.module.scss';
 
 export default function Row(props) {
   let line = props.line.split('');
+
   return (
     <div className={styles.row}>
       {line.map((letter, square) => (
